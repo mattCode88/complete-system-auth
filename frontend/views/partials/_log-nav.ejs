@@ -1,0 +1,16 @@
+<nav class="log-nav row">
+    <div class="d-flex justify-content-between align-items-center">
+        <a href="/">HOME</a>
+        <div class="d-flex">
+            <!-- se l' utente non è autenticato mostro login e register -->
+            <% if(!auth) { %>
+            <a href="/auth/login" class="me-2">Login</a>
+            <a href="/auth/register">Register</a>
+            <% } %>
+            <!-- se l' utente è autenticato mostro il logout -->
+            <% if(auth) { %>
+            <a href="/auth/logout">Logout</a>
+            <% } %>
+        </div>
+    </div>
+</nav>

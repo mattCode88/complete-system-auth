@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <% if(authMessage.length > 0){ %>
+            <div class="text-center"><%= authMessage %></div>
+        <% } %>
+
+        <div class="d-none" id="title"><%= title %></div>
+
+        <form action="/api/<%= title %>" method="POST" id="auth-form" class="col-10 offset-1 col-md-8 offset-md-2 col-xl-6 offset-xl-3 col-xxl-4 offset-xxl-4 auth-form mt-5 mb-5 pt-3 pb-3 pe-3 ps-3 ps-sm-5 pe-sm-5" novalidate>
+
+            <% if (title === 'register' || title === 'login'){ %>
+            <div class="mb-3 text-center">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" aria-describedby="username" required>
+                <div class="mt-extra-small mt-error d-none">
+                    Lo username deve essere di almeno 3 lettere.
+                </div>
+                <% if (title === 'register'){ %>
+                <div class="mt-extra-small mt-error d-none">
+                    Username non disponibile.
+                </div>
+                <% } %>
+            </div>
+            <% } %>
+
+            <% if (title === 'register' || title === 'password'){ %>
+            <div class="mb-3 text-center">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="email" required>
+                <div class="mt-extra-small mt-error d-none">
+                    Inserisci una mail valida
+                </div>
+                <% if (title === 'register'){ %>
+                <div class="mt-extra-small mt-error d-none">
+                    Email già registrata.
+                </div>
+                <% } %>
+            </div>
+            <% } %>
+
+            <% if (title === 'login' || title === 'register'){ %>
+            <div class="mb-3 text-center">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <div class="mt-extra-small mt-error d-none">
+                    La password deve essere di almeno 8 caratteri e deve contenere almeno una maiuscola, un numero e un carattere speciale.
+                </div>
+            </div>
+            <% } %>
+
+            <% if (title === 'password-reset'){ %>
+            <div class="mb-3 text-center">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" id="password-reset1" name="passwordReset1" placeholder="Nuova Password" required>
+                <div class="mt-extra-small mt-error d-none">
+                    La password deve essere di almeno 8 caratteri e deve contenere almeno una maiuscola, un numero e un carattere speciale.
+                </div>
+            </div>
+            <div class="mb-3 text-center">
+                <input type="password" class="form-control" id="password-reset2" name="passwordReset2" placeholder="Ripeti Password" readonly required>
+                <div class="mt-extra-small mt-error d-none">
+                    Le due password inserite non corrispondono.
+                </div>
+            </div>
+            <div class="d-none">
+                <input type="text" id="token" name="token" aria-describedby="token" value="<%= token %>" required>
+            </div>
+            <% } %>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary" id="button-submit" disabled>Submit</button>
+            </div>
+
+            <% if(title === 'login') { %>
+            <div class="d-grid mt-2">
+                <a href="/api/google-login" id="google-btn">
+                    <i class="bi bi-google"></i>
+                    <div>Sing in with Google</div>
+                </a>
+            </div>
+            <% } %>
+
+            <% if(title === 'register') { %>
+            <div class="mt-1 mt-line-height-none">
+                <a href="/auth/login" class="mt-extra-small">Hai già un account?</a>
+            </div>
+            <% } %>
+            <% if(title === 'login' || title === 'password') { %>
+            <div class="mt-1 mt-line-height-none">
+                <a href="/auth/register" class="mt-extra-small">Non hai ancora un account?</a>
+            </div>
+            <% } %>
+            <% if(title === 'login' || title === 'register') { %>
+            <div class="mt-1 mt-line-height-none">
+                <a href="/auth/recovery-password" class="mt-extra-small">Password dimenticata?</a>
+            </div>
+            <% } %>
+            <% if(title === 'password-reset' || title === 'password') { %>
+            <div class="mt-1 mt-line-height-none">
+                <a href="/auth/login" class="mt-extra-small">Ti sei ricordato la password?</a>
+            </div>
+            <% } %>
+
+        </form>
+
+    </div>
+
+</div>

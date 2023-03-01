@@ -1,0 +1,16 @@
+* {
+    font-family: 'Heebo', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.mt-extra-small {
+    font-size: .7em;
+}
+
+.mt-line-height-none {
+    line-height: 1;
+}

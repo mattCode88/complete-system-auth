@@ -1,0 +1,39 @@
+.auth-form {
+    border: 2px solid #0d6efd;
+}
+
+.auth-form a:hover {
+    text-decoration: underline;
+}
+
+.mt-error {
+    color: #dc3545;
+}
+
+#google-btn {
+    background-color: #fff;
+    height: 38px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #4285F4;
+    transition: all .5s ease;
+    text-decoration: none;
+}
+
+#google-btn>i {
+    margin-right: 20px;
+    font-size: 20px;
+    color: #4285F4;
+}
+
+#google-btn:hover {
+    background-color: #4285F4;
+    color: #fff;
+    border: none;
+}
+
+#google-btn:hover i {
+    color: #fff;
+}
